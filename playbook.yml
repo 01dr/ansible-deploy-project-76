@@ -15,6 +15,7 @@
       vars:
         pip_install_packages:
           - name: docker
+          - name: docker-compose
       become: yes
       tags: install
 
