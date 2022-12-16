@@ -1,0 +1,28 @@
+- hosts: all
+
+  tasks:
+    - name: install docker
+      ansible.builtin.apt:
+        update_cache: yes
+        pkg:
+          - docker
+      become: yes
+      tags: install
+
+    - name: install pip
+      import_role:
+        name: geerlingguy.pip
+      vars:
+        pip_install_packages:
+          - name: docker
+      become: yes
+      tags: install
+
+    - name: start redmine
+      community.docker.docker_container:
+        image: redmine
+        name: redmine
+        restart: true
+        ports:
+          - "80:3000"
+      tags: start
