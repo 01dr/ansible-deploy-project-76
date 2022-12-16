@@ -20,8 +20,9 @@
 
     - name: start redmine
       community.docker.docker_container:
-        image: redmine
+        image: redmine:latest
         name: redmine
+        pull: true
         restart: true
         ports:
           - "80:3000"
@@ -32,3 +33,15 @@
           REDMINE_DB_USERNAME: "{{ db_user }}"
           REDMINE_DB_PASSWORD: "{{ db_user_password }}"
       tags: start
+
+- hosts: webservers
+
+  tasks:
+    - name: install datadog
+      import_role:
+        name: datadog.datadog
+      vars:
+        datadog_site: "datadoghq.eu"
+        datadog_api_key: "{{ datadog_api_keys_dict[inventory_hostname] }}"
+      become: yes
+      tags: install-datadog

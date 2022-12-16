@@ -3,3 +3,7 @@ db_host: "db-postgresql-fra1-25062-do-user-13102080-0.b.db.ondigitalocean.com"
 db_port: "25060"
 db_name: "defaultdb"
 db_user: "doadmin"
+
+datadog_api_keys_dict:
+  s1: "93a8a129ebc23dfd0f97e2b16ed6db68"
+  s2: "93a8a129ebc23dfd0f97e2b16ed6db68"
