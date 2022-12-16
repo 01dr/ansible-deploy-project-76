@@ -2,7 +2,10 @@ install-requirements:
 	ansible-galaxy install -r requirements.yml
 
 install-packages:
-	ansible-playbook playbook.yml -i inventory.ini -t install
+	ansible-playbook playbook.yml -i inventory.ini -t install --vault-password-file ./.vault_password
+
+docker-ps:
+	ansible all -i inventory.ini -u root -a "docker ps -a" --vault-password-file ./.vault_password
 
 start:
-	ansible-playbook playbook.yml -i inventory.ini -t start
+	ansible-playbook playbook.yml -i inventory.ini -t start --vault-password-file ./.vault_password
