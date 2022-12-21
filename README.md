@@ -4,7 +4,7 @@
 
 ### Demo
 
-http://01dr.online
+~~http://01dr.online~~ NameCheap blocked domain so it's still available via lb's ip [http://157.245.22.200](http://157.245.22.200)
 
 ### Commands
 
